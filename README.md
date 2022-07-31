@@ -10,4 +10,4 @@ Instructor: Dr. G. V. V. Sharma (https://github.com/gadepall)
 ## List of assignments
 - Assignment 1 
   - 1 August 2022
-  - [Questions](https://github.com/gadepall/EE3900-2022/blob/main/filter/main.pdf)
+  - [Digital Signal Processing](https://github.com/gadepall/EE3900-2022/blob/main/filter/main.pdf)
