@@ -24,6 +24,8 @@
 \providecommand{\mbf}{\mathbf}
 \providecommand{\abs}[1]{\left\vert#1\right\vert}
 \providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\z}[1]{{\mathcal{Z}}\{#1\}}
+\providecommand{\ztrans}{\overset{\mathcal{Z}}{ \rightleftharpoons}}
 
 \providecommand{\parder}[2]{\frac{\partial}{\partial #2} \brak{#1}}
 
@@ -159,8 +161,111 @@
 		{\mathcal {Z}}\{x(n-1)\} &=  \sum _{m=-\infty }^{\infty }x(m)z^{-(m+1)} \\
 		&= z^{-1} \sum _{m=-\infty }^{\infty }x(m)z^{-m} \\
 		&= z^{-1} {\mathcal {Z}}\{x(m)\} \\	
-		&= z^{-1} X(z)
-	\end{align}		
+		&= z^{-1} X(z) \\
+		{\mathcal {Z}}\{x(n-k)\} &=  \sum _{n=-\infty }^{\infty }x(n - k)z^{-n} \\
+		&=  \sum _{m=-\infty }^{\infty }x(m)z^{-(m+k)} \\
+		&= z^{-k} \sum _{m=-\infty }^{\infty }x(m)z^{-m} \\
+		&= z^{-k} X(z)
+	\end{align}	
+	
+	\item Find
+	\begin{equation}
+		H(z) = \frac{Y(z)}{X(z)}
+	\end{equation}
+
+	from  \eqref{eq:iir_filter} assuming that the $Z$-transform is a linear operation.
+
+	\solution 
+	\begin{align}
+		y(n) + \frac{1}{2}y(n-1) = x(n) + x(n-2)
+	\end{align}
+	
+	On applying the $Z$-transform on both sides of the equation, we get
+	\begin{align}
+		{\mathcal {Z}}\cbrak{y(n) + \frac{1}{2}y(n-1)} = {\mathcal {Z}}\{x(n) + x(n-2)\}
+	\end{align}
+	
+	Since we are assuming that the $Z$-transform is a linear operation,
+	\begin{align}
+		\z{y(n)} + \frac12 \z{y(n-1)} &= \z{x(n)} + \z{x(n-2)} \\
+		\implies Y(z) + \frac12 z^{-1} Y(z) &= X(z) + z^{-2} X(z) \\
+		\implies Y(z) \brak{1 + \frac12 z^{-1}} &= X(z) (1 + z^{-2}) \\
+		\therefore H(z) = \frac{Y(z)}{X(z)} &= \frac{1 + z^{-2}}{1 + \frac12 z^{-1}}
+	\end{align}
+	
+	\item Find the Z transform of 
+	\begin{equation}
+		\delta(n) =
+		\begin{cases}
+			1 & n = 0 \\
+			0 & \text{otherwise}
+		\end{cases}
+	\end{equation}
+	and show that the $Z$-transform of
+	\begin{equation}
+	\label{eq:unit_step}
+	u(n) =
+	\begin{cases}
+		1 & n \ge 0 \\
+		0 & \text{otherwise}	
+	\end{cases}
+	\end{equation}
+	is
+	\begin{equation}
+		U(z) = \frac{1}{1-z^{-1}} \quad \abs{z} > 1
+	\end{equation}
+	
+	\solution 
+	\begin{align}
+		\z{\delta(n)} &= \sum _{n=-\infty }^{\infty }\delta(n)z^{-n} \\
+		&= \delta(0) z^{-0} \\
+		&= 1 
+	\end{align}
+	\begin{align}
+		\z{u(n)} &= \sum _{n=-\infty }^{\infty } u(n)z^{-n} \\
+		&= \sum _{n=0}^{\infty } \brak{z^{-1}}^n 
+	\end{align}
+	
+	This is the sum of an infinite geometric progression with first term $1$ and common ratio $z^{-1}$. The sum converges when
+	\begin{equation}
+		\abs{z^{-1}} < 1 \iff \abs{z} > 1
+	\end{equation}
+	
+	Therefore,
+	\begin{equation}
+		U(z) = \z{u(n)} = \frac{1}{1 - z^{-1}} \quad \abs{z} > 1
+	\end{equation}
+
+	\item Show that 
+	\begin{equation}
+		\label{eq:anun}
+		a^nu(n) \ztrans \frac{1}{1-az^{-1}} \quad \abs{z} > \abs{a}
+	\end{equation}
+	
+	\solution
+	\begin{align}
+		\z{a^nu(n)} &= \sum _{n=-\infty }^{\infty } a^nu(n)z^{-n} \\
+		&= \sum _{n=0}^{\infty } \brak{az^{-1}}^{n} 
+	\end{align}
+	
+	This is the sum of an infinite geometric progression with first term $1$ and common ratio $az^{-1}$. The sum converges when
+	\begin{equation}
+		\abs{az^{-1}} < 1 \iff \abs{z} > \abs{a}
+	\end{equation}
+	
+	Therefore,
+	\begin{equation}
+		\z{a^nu(n)} = \frac{1}{1-az^{-1}} \quad \abs{z} > \abs{a}
+	\end{equation}
+	
+	\item Let
+	\begin{equation}
+		H\brak{e^{\j \omega}} = H\brak{z = e^{\j \omega}}.
+	\end{equation}
+	Plot $\abs{H\brak{e^{\j \omega}}}$.  Comment.  $H(e^{\j \omega})$ is known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$
+	
+	\solution
+
 	
 	\end{enumerate}
 	
