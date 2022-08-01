@@ -98,5 +98,39 @@
 	
 	\end{enumerate}
 	
+	\section{Difference Equation}
+	\begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
+	\item Let
+	\begin{equation}
+		x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1}
+	\end{equation}
+	Sketch $x(n)$
+	\item Let
+	\begin{multline}
+		\label{eq:iir_filter}
+		y(n) + \frac{1}{2}y(n-1) = x(n) + x(n-2), \\
+ 		y(n) = 0, n < 0
+	\end{multline}
+	
+	Sketch $y(n)$
+
+	\solution Download the following Python code that plots Fig. \ref{fig-3.2}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/3.2.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 3.2.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/3.2.png}
+		\caption{The sketches of $x(n)$ and $y(n)$}
+		\label{fig-3.2}	
+	\end{figure}
+	\end{enumerate}
+	
 	
 \end{document}
