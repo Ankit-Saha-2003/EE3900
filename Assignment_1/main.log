@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.6.29)  1 AUG 2022 09:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.6.29)  1 AUG 2022 10:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -712,11 +712,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 94--95
 \OT1/txr/m/n/12 Sound[]With[]Reduced[]Noise.wav. Play
  []
 
-<./figs/3.2.png, id=22, 462.528pt x 346.896pt>
+<./figs/3.2.png, id=26, 462.528pt x 346.896pt>
 File: ./figs/3.2.png Graphic file (type png)
 <use ./figs/3.2.png>
 Package pdftex.def Info: ./figs/3.2.png  used on input line 129.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 135.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 135.
+
 [1{/usr/share/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -724,16 +732,16 @@ Package pdftex.def Info: ./figs/3.2.png  used on input line 129.
 
  <./figs/3.2.png>] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 205E383B45087A93D3CBFF5D7ACB82FC;408.
+(rerunfilecheck)             Checksum: 8CEB33A7D77C2A03B6C926238E209511;506.
  ) 
 Here is how much of TeX's memory you used:
- 13261 strings out of 480806
- 194945 string characters out of 5905151
- 576664 words of memory out of 6000000
- 30410 multiletter control sequences out of 15000+600000
- 475662 words of font info for 180 fonts, out of 8000000 for 9000
+ 13276 strings out of 480806
+ 195103 string characters out of 5905151
+ 576746 words of memory out of 6000000
+ 30413 multiletter control sequences out of 15000+600000
+ 477038 words of font info for 182 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,7n,63p,400b,1599s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,9n,63p,400b,1599s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/txfonts/rtcxr.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/typ
@@ -743,10 +751,10 @@ pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on main.pdf (2 pages, 61990 bytes).
+Output written on main.pdf (2 pages, 65698 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
- 31 named destinations out of 1000 (max. 500000)
- 30 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 PDF objects out of 1000 (max. 8388607)
+ 109 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
 

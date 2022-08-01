@@ -132,5 +132,37 @@
 	\end{figure}
 	\end{enumerate}
 	
+	\section{$Z$-transform}
+	\begin{enumerate}[label=\thesection.\arabic*]
+	\item The $Z$-transform of $x(n)$ is defined as
+	\begin{equation}
+		\label{eq:z_trans}
+		X(z)={\mathcal {Z}}\{x(n)\}=\sum _{n=-\infty }^{\infty }x(n)z^{-n}
+	\end{equation}
+	Show that
+	\begin{equation}
+		\label{eq:shift1}
+		{\mathcal {Z}}\{x(n-1)\} = z^{-1}X(z)
+	\end{equation}
+	and find
+	\begin{equation}
+		{\mathcal {Z}}\{x(n-k)\} 
+	\end{equation}
+	
+	\solution 
+	\begin{align}
+		{\mathcal {Z}}\{x(n-1)\} &= \sum _{n=-\infty }^{\infty }x(n - 1)z^{-n} 
+	\end{align}
+	
+	Substitute $n - 1 = m$
+	\begin{align}
+		{\mathcal {Z}}\{x(n-1)\} &=  \sum _{m=-\infty }^{\infty }x(m)z^{-(m+1)} \\
+		&= z^{-1} \sum _{m=-\infty }^{\infty }x(m)z^{-m} \\
+		&= z^{-1} {\mathcal {Z}}\{x(m)\} \\	
+		&= z^{-1} X(z)
+	\end{align}		
+	
+	\end{enumerate}
+	
 	
 \end{document}
