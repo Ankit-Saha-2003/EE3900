@@ -262,10 +262,38 @@
 	\begin{equation}
 		H\brak{e^{\j \omega}} = H\brak{z = e^{\j \omega}}.
 	\end{equation}
-	Plot $\abs{H\brak{e^{\j \omega}}}$.  Comment.  $H(e^{\j \omega})$ is known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$
+	Plot $\abs{H\brak{e^{\j \omega}}}$.  Comment.  $H(e^{\j \omega})$ is known as the {\em Discrete-Time Fourier Transform} (DTFT) of $x(n)$
 	
 	\solution
+	\begin{align}
+		H\brak{e^{\j \omega}} &= \frac{1 + e^{-2\j\omega}}{1 + \frac12 e^{-\j\omega}} \\
+		\implies \abs{H\brak{e^{\j \omega}}} &= \frac{\abs{1 + \cos2\omega - \j\sin2\omega}}{\abs{1 + \frac12 \cos\omega - \frac12 \sin\omega}} \\
+		&= \sqrt{\frac{(1 + \cos2\omega)^2 + (\sin2\omega)^2}{(1 + \frac12 \cos\omega)^2 + (\frac12 \sin\omega)^2}} \\
+		&= \sqrt{\frac{2 + 2\cos2\omega}{\frac54 + \cos\omega}} \\
+		&= \sqrt{\frac{2(2\cos^2\omega)4}{5 + 4\cos\omega} } \\
+		&= \frac{4\abs{\cos\omega}}{\sqrt{5 + 4\cos\omega}}
+	\end{align}
+	
+	Download the following Python code that plots Fig. \ref{fig-4.5}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/4.5.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 4.5.py
+	\end{lstlisting}
 
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/4.5.png}
+		\caption{The plot of the magnitude of the discrete-time Fourier transform of $x(n)$}
+		\label{fig-4.5}	
+	\end{figure}
+
+	From the plot, it is clear that the magnitude of the discrete-time Fourier transform of $x(n)$ is symmetric about $x = 0$ and is periodic with a period of $2\pi$. 
+	
+	Also, it attains a maximum value of $4$ at $$x = (2n + 1)\pi, \quad n \in \mathbb{Z}$$ and a minimum of $0$ at $$x = \brak{2m + 1}\frac{\pi}{2}, \quad m \in \mathbb{Z}\quad $$
 	
 	\end{enumerate}
 	
