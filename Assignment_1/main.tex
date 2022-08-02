@@ -293,8 +293,70 @@
 
 	From the plot, it is clear that the magnitude of the discrete-time Fourier transform of $x(n)$ is symmetric about $x = 0$ and is periodic with a period of $2\pi$. 
 	
-	Also, it attains a maximum value of $4$ at $$x = (2n + 1)\pi, \quad n \in \mathbb{Z}$$ and a minimum of $0$ at $$x = \brak{2m + 1}\frac{\pi}{2}, \quad m \in \mathbb{Z}\quad $$
+	Also, it attains a maximum value of $4$ at 
+	\begin{align}
+		x = (2n + 1)\pi, \quad n \in \mathbb{Z}
+	\end{align} 
 	
+	and a minimum of $0$ at 
+	\begin{align} 
+		x = \brak{2m + 1}\frac{\pi}{2}, \quad m \in \mathbb{Z}\quad 
+	\end{align}
+	
+	\end{enumerate}
+	
+	\section{Impulse Response}
+	\begin{enumerate}[label=\thesection.\arabic*]
+	\item \label{prob:impulse_resp}
+	Find an expression for $h(n)$ using $H(z)$, given that 
+	\begin{equation}
+		\label{eq:impulse_resp}
+		h(n) \ztrans H(z)
+	\end{equation}
+	and there is a one to one relationship between $h(n)$ and $H(z)$. $h(n)$ is known as the {\em impulse response} of the system defined by \eqref{eq:iir_filter}
+	
+	\solution
+	\begin{align}
+		H(z) &= \frac{1 + z^{-2}}{1 + \frac12 z^{-1}} \\
+		&= \frac{1}{1 + \frac12 z^{-1}} + \frac{z^{-2}}{1 + \frac12 z^{-1}}
+	\end{align}
+	
+	From \eqref{eq:anun},
+	\begin{align}
+		&\frac{1}{1-az^{-1}} \ztrans a^nu(n)  \quad \abs{z} > \abs{a} \\
+		\implies &\frac{1}{1 + \frac12 z^{-1}} \ztrans \brak{-\frac12}^n u(n) \quad \abs{z} > \frac12 \\
+		\implies &\frac{z^{-2}}{1 + \frac12 z^{-1}} \ztrans \brak{-\frac12}^{n-2} u(n-2) \quad \abs{z} > \frac12
+	\end{align}
+	
+	Since the $Z$-transform is a linear operator, for $\abs{z} > \frac12$
+	\begin{align}
+		H(z) \ztrans \brak{-\frac12}^n u(n) + \brak{-\frac12}^{n-2} u(n-2)
+	\end{align}
+	
+	Therefore, 
+	\begin{align}
+		h(n) = \brak{-\frac12}^n u(n) + \brak{-\frac12}^{n-2} u(n-2)
+	\end{align}
+	
+	\item Sketch $h(n)$. Is it bounded? Convergent? 
+	
+	\solution Download the following Python code that plots Fig. \ref{fig-5.2}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/5.2.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 5.2.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/5.2.png}
+		\caption{The plot of $h(n)$}
+		\label{fig-5.2}	
+	\end{figure}
+
 	\end{enumerate}
 	
 	
