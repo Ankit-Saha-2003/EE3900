@@ -38,6 +38,7 @@
 
 \newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 \newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
 
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmax}{arg\,max}
@@ -510,6 +511,83 @@
 	
 	Therefore, convolution is commutative.
 	
+	\end{enumerate}
+	
+	\section{DFT and FFT}
+	\begin{enumerate}[label=\thesection.\arabic*]
+	\item Compute
+	\begin{equation}
+		X(k) \define \sum _{n=0}^{N-1}x(n) e^{-\j2\pi kn/N} \quad k = 0,1,\dots, N-1
+	\end{equation}
+	and $H(k)$ using $h(n)$
+	
+	\solution Download the following Python code that plots Fig. \ref{fig-6.1}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/6.1.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 6.1.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/6.1.png}
+		\caption{Plots of the real parts of the discrete Fourier transforms of $x(n)$ and $h(n)$}
+		\label{fig-6.1}	
+	\end{figure}
+	
+	\item Compute 
+	\begin{equation}
+		Y(k) = X(k)H(k)
+	\end{equation}
+	
+	\solution Download the following Python code that plots Fig. \ref{fig-6.2}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/6.2.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 6.2.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/6.2.png}
+		\caption{Plot of $Y(k)$}
+		\label{fig-6.2}	
+	\end{figure}
+
+	\item Compute
+	\begin{equation}
+ 		y\brak{n}={\frac {1}{N}}\sum _{k=0}^{N-1}Y\brak{k}e^{\j 2\pi kn/N} \quad n = 0,1,\dots, N-1
+	\end{equation}
+	
+	\solution Download the following Python code that plots Fig. \ref{fig-6.3}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/6.3.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 6.3.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/6.3.png}
+		\caption{Plot of the inverse discrete Fourier transform of $Y(k)$}
+		\label{fig-6.3}	
+	\end{figure}
+	
+	The plot is exactly the same as that obtained in Fig. \ref{fig-3.2}. Therefore, we conclude that 
+	\begin{align}
+		y(n) &= x(n) * h(n) \\
+		\iff Y(k) &= X(k)H(k)
+	\end{align}
+
 	\end{enumerate}
 	
 	

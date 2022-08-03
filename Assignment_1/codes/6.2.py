@@ -1,5 +1,4 @@
-# Plotting the convolution of x(n) and h(n)
-# y(n) = x(n) (*) h(n)
+# Plotting Y(k) = X(k)H(k)
 
 # Name: Ankit Saha
 # Roll number: AI21BTECH11004
@@ -7,6 +6,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy
+
+N = 20
 
 def x(n):
     if n < 0 or n > 5:
@@ -30,16 +31,18 @@ def h(n):
     else:
         return 2*(delta(n+1) + delta(n-1) - h(n+1))
 
-def y(n):
-    return x(0)*h(n) + x(1)*h(n-1) + x(2)*h(n-2) + x(3)*h(n-3) + x(4)*h(n-4) + x(5)*h(n-5)
+def DFT(k, inp):
+    ksum = 0
+    for n in range(N):
+        ksum += inp(n) * np.exp(-2j * np.pi * k * n / N)
+    return ksum
 
-vec_y = scipy.vectorize(y, otypes=[float])
-
-N = np.linspace(0, 19, 20)
-plt.stem(N, vec_y(N))
-plt.xlabel('$n$')
-plt.ylabel('$y(n)$')
+K = np.linspace(0, N-1, N)
+plt.stem(K, np.real(DFT(K, x) * DFT(K, h)))
+plt.title('Product of $X(k)$ and $H(k)$')
+plt.ylabel('$Y(k)$')
+plt.xlabel('$k$')
 plt.grid()
-plt.title('Filter Output using Convolution')
-plt.savefig('../figs/5.5.png')
+plt.savefig('../figs/6.2.png')
 plt.show()
+
