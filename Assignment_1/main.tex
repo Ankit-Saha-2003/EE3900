@@ -457,7 +457,58 @@
 	Comment. The operation in \eqref{eq:convolution} is known as {\em convolution}
 	
 	\solution
+	\begin{align}
+		x(n)*h(n) &= \sum_{k=-\infty}^{\infty}x(k)h(n-k) \\
+		&= \sum_{k=0}^{5}x(k)h(n-k)
+	\end{align}
+	since $x(k) = 0$ for $k < 0$ and $k > 5$ 
 	
+	Download the following Python code that plots Fig. \ref{fig-5.5}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/5.5.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 5.5.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/5.5.png}
+		\caption{Plot of the convolution of $x(n)$ and $h(n)$}
+		\label{fig-5.5}	
+	\end{figure}
+	
+	The plot is exactly the same as that obtained in Fig. \ref{fig-3.2}. Therefore, we can conclude that
+	\begin{equation}
+		y(n) = x(n)*h(n) 
+	\end{equation}
+	
+	\item Show that
+	\begin{equation}
+		y(n) =  \sum_{k=-\infty}^{\infty}x(n-k)h(k)
+	\end{equation}
+	
+	\solution We know that
+	\begin{equation}
+		y(n) = x(n)*h(n) = \sum_{k=-\infty}^{\infty}x(k)h(n-k)
+	\end{equation}
+	
+	Substitute $k = n - i$
+	\begin{align}
+		 \sum_{k=-\infty}^{\infty}x(k)h(n-k) &=  \sum_{n - i =-\infty}^{\infty}x(n-i)h(n-(n-i)) \\
+		 &= \sum_{i = \infty}^{-\infty} x(n - i) h(i) \\
+		 &= \sum_{i = -\infty}^{\infty} x(n - i) h(i)
+	\end{align}
+	since the order of limits does not matter for a summation.
+	Thus,
+	\begin{align}
+		\sum_{k=-\infty}^{\infty}x(k)h(n-k) &= \sum_{k=-\infty}^{\infty}x(n-k)h(k) \\
+		\implies x(n) * h(n) &= h(n) * x(n)
+	\end{align}
+	
+	Therefore, convolution is commutative.
 	
 	\end{enumerate}
 	
