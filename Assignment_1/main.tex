@@ -61,8 +61,8 @@
 	Install the necessary packages by running the following commands
 	\begin{lstlisting}
 		sudo dnf up
-		sudo dnf install libffi-dev libsndfile1 python3-scipy  python3-numpy python3-matplotlib 
-		pip install cffi pysoundfile 
+		sudo dnf install libffi-devel libsndfile python3-scipy  python3-numpy python3-matplotlib 
+		python -m pip install cffi pysoundfile 
 	\end{lstlisting}
 
 	\section{Digital Filter}
@@ -291,7 +291,7 @@
 		\label{fig-4.5}	
 	\end{figure}
 
-	From the plot, it is clear that the magnitude of the discrete-time Fourier transform of $x(n)$ is symmetric about $x = 0$ and is periodic with a period of $2\pi$. 
+	From the plot, it is clear that the magnitude of the discrete-time Fourier transform of $x(n)$ is symmetric about $x = 0$ (even function) and is periodic with a period of $2\pi$. 
 	
 	Also, it attains a maximum value of $4$ at 
 	\begin{align}
@@ -356,7 +356,109 @@
 		\caption{The plot of $h(n)$}
 		\label{fig-5.2}	
 	\end{figure}
+	
+	From the plot, it is clear that the sequence is convergent to $0$, which implies that it is bounded as well.
+	
+	\item The system with $h(n)$ is defined to be stable if
+	\begin{equation}
+		\sum_{n=-\infty}^{\infty}h(n) < \infty
+	\end{equation}
+	Is the system defined by \eqref{eq:iir_filter} stable for the impulse response in \eqref{eq:impulse_resp}?	
+	
+	\solution
+	\begin{multline}
+		\sum_{n=-\infty}^{\infty}h(n) = \sum_{n=-\infty}^{\infty} \brak{-\frac12}^n u(n) \\
+		+ \sum_{n=-\infty}^{\infty} \brak{-\frac12}^{n-2} u(n-2)
+	\end{multline}
+	\begin{align}
+		\sum_{n=-\infty}^{\infty}h(n) = \sum_{n=0}^{\infty}\brak{-\frac12}^n + \sum_{n=2}^{\infty}\brak{-\frac12}^{n-2}
+	\end{align}
+	
+	These are both sums of infinite geometric progressions with first terms $1$ and common ratios $-\frac12$
+	\begin{align}
+		\sum_{n=-\infty}^{\infty}h(n) &= \frac{1}{1 - \brak{-\frac12}} + \frac{1}{1 - \brak{-\frac12}} \\
+		&= \frac{4}{3} < \infty
+	\end{align}
+	
+	Therefore, the system is stable.
+	
+	\item Compute and sketch $h(n)$ using 
+	\begin{equation}
+		\label{eq:iir_filter_h}
+		h(n) + \frac{1}{2}h(n-1) = \delta(n) + \delta(n-2)
+	\end{equation}
 
+	This is the definition of $h(n)$
+	
+	\solution 
+	\begin{equation}
+		h(0) = 1
+	\end{equation}
+	
+	Now, for $n = 1$,
+	\begin{align}
+		h(1) + \frac12 h(0) &= \delta(1) + \delta(-1) = 0 \\
+		\implies h(1) &= - \frac{1}{2} h(0) = -\frac{1}{2}
+	\end{align}
+	
+	For $n = 2$,
+	\begin{align}
+		h(2) + \frac12 h(1) &= \delta(2) + \delta(0) = 1 \\
+		\implies h(2) &= 1 - \frac{1}{2} h(1) = \frac{3}{2}
+	\end{align}
+	
+	For $n > 2$, the right hand side of the equation is always zero. Thus,
+	\begin{align}
+		h(n) &= -\frac{1}{2} h(n-1) \qquad n > 2 \\
+		h(3) &= \frac{3}{2} \brak{-\frac12} \\
+		h(4) &= \frac{3}{2} \brak{-\frac12}^2 \\
+		&~\vdots \\
+		h(n) &= \frac{3}{2} \brak{-\frac12}^{n-2}
+	\end{align}
+	
+	Therefore,
+	\begin{align}
+		h(n) = 
+		\begin{cases}
+			1 & n = 0 \\
+			-\dfrac{1}{2} & n = 1 \\
+			\dfrac{3}{2} \brak{-\dfrac12}^{n-2} & n \ge 2
+		\end{cases}
+	\end{align}
+	
+	Thus, it is bounded and convergent to $0$
+	\begin{equation}
+		\lim_{n \to \infty} h(n) = 0
+	\end{equation}
+	
+	Download the following Python code that plots Fig. \ref{fig-5.4}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/5.4.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 5.4.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/5.4.png}
+		\caption{The plot of $h(n)$ from its definition}
+		\label{fig-5.4}	
+	\end{figure}
+	
+	\item Compute 
+	\begin{equation}
+		\label{eq:convolution}
+		y(n) = x(n)*h(n) = \sum_{k=-\infty}^{\infty}x(k)h(n-k)
+	\end{equation}
+
+	Comment. The operation in \eqref{eq:convolution} is known as {\em convolution}
+	
+	\solution
+	
+	
 	\end{enumerate}
 	
 	

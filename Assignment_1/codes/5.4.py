@@ -1,4 +1,4 @@
-# Plotting h(n)
+# Plotting h(n) by its definition
 
 # Name: Ankit Saha
 # Roll number: AI21BTECH11004
@@ -7,15 +7,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy
 
-def u(n):
-    if n >= 0:
+def delta(n):
+    if n == 0:
         return 1
     else:
         return 0
 
 def h(n):
-    return u(n) * (-0.5)**n + u(n-2) * (-0.5)**(n-2) 
-
+    if n == 0:
+        return 1
+    else:
+        return delta(n) + delta(n-2) - 0.5*h(n-1)
 
 vec_h = scipy.vectorize(h, otypes=[float])
 
@@ -24,6 +26,6 @@ plt.stem(N, vec_h(N))
 plt.xlabel('$n$')
 plt.ylabel('$h(n)$')
 plt.grid()
-plt.title('Filter Impulse Response')
-plt.savefig('../figs/5.2.png')
+plt.title('Impulse Response Definition')
+plt.savefig('../figs/5.4.png')
 plt.show()
