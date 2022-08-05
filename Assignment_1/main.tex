@@ -587,6 +587,90 @@
 		y(n) &= x(n) * h(n) \\
 		\iff Y(k) &= X(k)H(k)
 	\end{align}
+	
+	\item Repeat the previous exercise by computing $X(k), H(k)$ and $y(n)$ through FFT and 
+IFFT.
+	
+	\solution Download the following Python code that plots Fig. \ref{fig-6.4}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/6.4.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 6.4.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/6.4.png}
+		\caption{Plot of $y(n)$ by fast Fourier transform}
+		\label{fig-6.4}	
+	\end{figure}
+	
+	The plot is exactly the same as that obtained in Fig. \ref{fig-3.2}.
+	
+	\item Wherever possible, express all the above equations as matrix equations.
+	
+	\solution
+	\begin{align}
+		\vec{x} &= \myvec{x_0 & x_1	 & \cdots & x_{N-1}}^\top \\
+		\vec{h} &= \myvec{x_0 & x_1	 & \cdots & x_{N-1}}^\top \\
+		\vec{y} &= \vec{x} \circledast \vec{h} \\
+		\myvec{y_1 \\ y_2 \\ \vdots \\ y_{2N - 1}} &= \myvec{
+			h_0 & 0 & 0 & \cdots & 0 \\
+			h_1 & h_0 & 0 & \cdots & 0 \\
+			h_2 & h_1 & h_0 & \cdots & 0 \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			h_{N-1} & h_{N-2} & h_{N-3} & \cdots & h_0 \\
+			0 & h_{N-1} & h_{N-2} & \cdots & h_1 \\
+			0 & 0 & h_{N-1} & \cdots & h_2 \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & 0 & \cdots & h_{N-1}
+		}		
+		\myvec{x_1\\x_2\\ \vdots \\x_N}
+	\end{align}
+	
+	The convolution can be written using a Toeplitz matrix. 
+	
+	Consider the DFT matrix
+	\begin{align}
+		\vec{W} = \myvec{
+			1 & 1 & 1 & 1 & \cdots & 1 \\
+			1 & \omega & \omega^2 & \omega^3 & \cdots & \omega^{N-1} \\
+			1 & \omega^2 & \omega^4 & \omega^6 & \cdots & \omega^{2(N-1)} \\
+			1 & \omega^3 & \omega^6 & \omega^9 & \cdots & \omega^{3(N-1)} \\
+			\vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\ 
+			1 & \omega^{N-1} & \omega^{2(N-1)} & \omega^{3(N-1)} & \cdots & \omega^{(N-1)(N-1)}
+		}
+	\end{align}
+	
+	where $\omega = e^{-\j 2\pi/N}$ is the $N^{\mathrm{th}}$ root of unity
+	
+	Then the discrete Fourier transforms of $\vec{x}$ and $\vec{h}$ are given by
+	\begin{align}
+		\vec{X} &= \vec{W} \vec{x} \\
+		\vec{H} &= \vec{W} \vec{h}
+	\end{align}
+	
+	$\vec{Y}$ is then given by
+	\begin{equation}
+		\vec{Y} = \vec{X} \circ \vec{H}
+	\end{equation}
+	where $\circ$ denotes the Hadamard product (element-wise multiplication)
+	
+	But $\vec{Y}$ is the discrete Fourier transform of the filter output $\vec{y}$
+	\begin{equation}
+		\vec{Y} = \vec{W} \vec{y}
+	\end{equation}
+	
+	Thus,
+	\begin{align}
+		\vec{W} \vec{y} &= \vec{X} \circ \vec{H} \\
+		\implies \vec{y} &= \vec{W}^{-1} \brak{\vec{X} \circ \vec{H}} \\
+		&= \vec{W}^{-1} \brak{\vec{W} \vec{x} \circ \vec{W} \vec{h}}
+	\end{align}
+	This is the inverse discrete Fourier transform of $\vec{Y}$
 
 	\end{enumerate}
 	
