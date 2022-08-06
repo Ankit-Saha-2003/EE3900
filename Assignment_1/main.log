@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.6.29)  5 AUG 2022 23:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.6.29)  6 AUG 2022 17:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -712,145 +712,157 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--98
 \OT1/txr/m/n/12 Sound[]With[]Reduced[]Noise.wav. Play
  []
 
-<./figs/3.2.png, id=34, 462.528pt x 346.896pt>
+<./figs/3.2.png, id=38, 462.528pt x 346.896pt>
 File: ./figs/3.2.png Graphic file (type png)
 <use ./figs/3.2.png>
 Package pdftex.def Info: ./figs/3.2.png  used on input line 132.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 138.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 138.
-
 [1{/usr/share/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Overfull \hbox (10.11938pt too wide) detected at line 195
+<./figs/3.3.png, id=80, 462.528pt x 346.896pt>
+File: ./figs/3.3.png Graphic file (type png)
+<use ./figs/3.3.png>
+Package pdftex.def Info: ./figs/3.3.png  used on input line 162.
+(pdftex.def)             Requested size: 252.0pt x 189.00427pt.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 169.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 169.
+
+[2 <./figs/3.2.png> <./figs/3.3.png>]
+Overfull \hbox (10.11938pt too wide) detected at line 226
 []
  []
 
-[2 <./figs/3.2.png>]
 
-LaTeX Warning: Command \j invalid in math mode on input line 264.
-
-
-LaTeX Warning: Command \j invalid in math mode on input line 264.
+LaTeX Warning: Command \j invalid in math mode on input line 295.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 266.
+LaTeX Warning: Command \j invalid in math mode on input line 295.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 266.
+LaTeX Warning: Command \j invalid in math mode on input line 297.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 297.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 276.
+LaTeX Warning: Command \j invalid in math mode on input line 307.
 
-<./figs/4.5.png, id=113, 462.528pt x 346.896pt>
+
+LaTeX Warning: Command \j invalid in math mode on input line 307.
+
+[3]
+<./figs/4.5.png, id=154, 462.528pt x 346.896pt>
 File: ./figs/4.5.png Graphic file (type png)
 <use ./figs/4.5.png>
-Package pdftex.def Info: ./figs/4.5.png  used on input line 290.
+Package pdftex.def Info: ./figs/4.5.png  used on input line 321.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-[3 <./figs/4.5.png>]
-<./figs/5.2.png, id=146, 462.528pt x 346.896pt>
+<./figs/5.2.png, id=158, 462.528pt x 346.896pt>
 File: ./figs/5.2.png Graphic file (type png)
 <use ./figs/5.2.png>
-Package pdftex.def Info: ./figs/5.2.png  used on input line 356.
+Package pdftex.def Info: ./figs/5.2.png  used on input line 387.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
- [4 <./figs/5.2.png>]
-<./figs/5.4.png, id=181, 462.528pt x 346.896pt>
+ [4 <./figs/4.5.png> <./figs/5.2.png>]
+<./figs/5.4.png, id=191, 462.528pt x 346.896pt>
 File: ./figs/5.4.png Graphic file (type png)
 <use ./figs/5.4.png>
-Package pdftex.def Info: ./figs/5.4.png  used on input line 447.
-(pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-<./figs/5.5.png, id=184, 462.528pt x 346.896pt>
-File: ./figs/5.5.png Graphic file (type png)
-<use ./figs/5.5.png>
-Package pdftex.def Info: ./figs/5.5.png  used on input line 479.
+Package pdftex.def Info: ./figs/5.4.png  used on input line 478.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
  [5 <./figs/5.4.png>]
+<./figs/5.5.png, id=224, 462.528pt x 346.896pt>
+File: ./figs/5.5.png Graphic file (type png)
+<use ./figs/5.5.png>
+Package pdftex.def Info: ./figs/5.5.png  used on input line 510.
+(pdftex.def)             Requested size: 252.0pt x 189.00427pt.
+<./figs/5.5-toeplitz.png, id=226, 462.528pt x 346.896pt>
+File: ./figs/5.5-toeplitz.png Graphic file (type png)
+<use ./figs/5.5-toeplitz.png>
+Package pdftex.def Info: ./figs/5.5-toeplitz.png  used on input line 532.
+(pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 
-LaTeX Warning: Command \j invalid in math mode on input line 520.
 
-<./figs/6.1.png, id=221, 462.528pt x 346.896pt>
+LaTeX Warning: Command \j invalid in math mode on input line 569.
+
+[6 <./figs/5.5.png> <./figs/5.5-toeplitz.png>]
+<./figs/6.1.png, id=258, 462.528pt x 346.896pt>
 File: ./figs/6.1.png Graphic file (type png)
 <use ./figs/6.1.png>
-Package pdftex.def Info: ./figs/6.1.png  used on input line 536.
+Package pdftex.def Info: ./figs/6.1.png  used on input line 585.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-<./figs/6.2.png, id=223, 462.528pt x 346.896pt>
+<./figs/6.2.png, id=260, 462.528pt x 346.896pt>
 File: ./figs/6.2.png Graphic file (type png)
 <use ./figs/6.2.png>
-Package pdftex.def Info: ./figs/6.2.png  used on input line 558.
+Package pdftex.def Info: ./figs/6.2.png  used on input line 607.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 
-LaTeX Warning: Command \j invalid in math mode on input line 565.
 
-<./figs/6.3.png, id=225, 462.528pt x 346.896pt>
+LaTeX Warning: Command \j invalid in math mode on input line 614.
+
+<./figs/6.3.png, id=262, 462.528pt x 346.896pt>
 File: ./figs/6.3.png Graphic file (type png)
 <use ./figs/6.3.png>
-Package pdftex.def Info: ./figs/6.3.png  used on input line 580.
+Package pdftex.def Info: ./figs/6.3.png  used on input line 629.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-[6 <./figs/5.5.png> <./figs/6.1.png>]
-<./figs/6.4.png, id=260, 462.528pt x 346.896pt>
+[7 <./figs/6.1.png> <./figs/6.2.png> <./figs/6.3.png>]
+<./figs/6.4.png, id=297, 462.528pt x 346.896pt>
 File: ./figs/6.4.png Graphic file (type png)
 <use ./figs/6.4.png>
-Package pdftex.def Info: ./figs/6.4.png  used on input line 606.
+Package pdftex.def Info: ./figs/6.4.png  used on input line 655.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 
-Overfull \hbox (18.89836pt too wide) detected at line 646
+Overfull \hbox (18.89836pt too wide) detected at line 695
 []
  []
 
 
-LaTeX Warning: Command \j invalid in math mode on input line 648.
+LaTeX Warning: Command \j invalid in math mode on input line 697.
 
-[7 <./figs/6.2.png> <./figs/6.3.png> <./figs/6.4.png>]
-Underfull \hbox (badness 5260) in paragraph at lines 659--661
+
+Underfull \hbox (badness 5260) in paragraph at lines 708--710
 \OT1/txr/m/n/12 where $\OMS/txsy/m/n/12 ^^N$ \OT1/txr/m/n/12 de-notes the Hadam
 ard prod-uct
  []
 
-[8
-
-] (./main.aux)
+[8 <./figs/6.4.png>] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 66FC8CD0E0CBA4D9D2AE2DB3538B3FF5;736.
+(rerunfilecheck)             Checksum: EDE0BD39395C52B880A8A7EB6EB76C7D;824.
  ) 
 Here is how much of TeX's memory you used:
- 13503 strings out of 480806
- 198100 string characters out of 5905151
- 580632 words of memory out of 6000000
- 30479 multiletter control sequences out of 15000+600000
+ 13542 strings out of 480806
+ 198734 string characters out of 5905151
+ 578783 words of memory out of 6000000
+ 30495 multiletter control sequences out of 15000+600000
  477276 words of font info for 183 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  60i,17n,63p,400b,1599s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -865,10 +877,10 @@ are/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/share/texlive
 /fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a
 .pfb>
-Output written on main.pdf (8 pages, 243995 bytes).
+Output written on main.pdf (8 pages, 275237 bytes).
 PDF statistics:
- 377 PDF objects out of 1000 (max. 8388607)
- 334 compressed objects within 4 object streams
- 193 named destinations out of 1000 (max. 500000)
- 94 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 411 PDF objects out of 1000 (max. 8388607)
+ 364 compressed objects within 4 object streams
+ 214 named destinations out of 1000 (max. 500000)
+ 112 words of extra memory for PDF output out of 10000 (max. 10000000)
 
