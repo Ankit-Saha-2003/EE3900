@@ -5,8 +5,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy as sp
-from scipy.linalg import dft
+from scipy import vectorize, linalg
 
 N = 20
 
@@ -32,14 +31,14 @@ def h(n):
     else:
         return 2*(delta(n+1) + delta(n-1) - h(n+1))
 
-x_vec = sp.vectorize(x, otypes=[float])
-h_vec = sp.vectorize(h, otypes=[float])
+x_vec = vectorize(x, otypes=[float])
+h_vec = vectorize(h, otypes=[float])
 
 n_values = np.arange(N)
 x_arr = x_vec(n_values)
 h_arr = h_vec(n_values)
 
-W = dft(N)
+W = linalg.dft(N)
 X = np.dot(W, x_arr)
 H = np.dot(W, h_arr)
 Y = X * H
