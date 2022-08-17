@@ -12,6 +12,7 @@
 \usepackage{bm}
 \usepackage{hyperref}
 \usepackage{polynom}
+\usepackage{siunitx}
 
 \newcommand{\solution}{\noindent \textbf{Solution: }}
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
@@ -1036,6 +1037,59 @@ IFFT.
 		\vec{y} = \myvec{y(n) \\ y(n-1) \\ y(n-2) \\ y(n-3) \\ y(n-4)} \qquad
 		\vec{x} = \myvec{x(n) \\ x(n-1) \\ x(n-2) \\ x(n-3) \\ x(n-4)}
 	\end{align}
+	
+	Download the following Python code
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/7.2.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 7.2.py
+	\end{lstlisting}
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/7.2.1.png}
+		\caption{Plot of $y(n)$}
+		\label{fig-7.2.1}	
+	\end{figure}
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/7.2.2.png}
+		\caption{Plot of $\abs{H(e^{\j\omega})}$}
+		\label{fig-7.2.2}	
+	\end{figure}
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/7.2.3.png}
+		\caption{Plot of $h(n)$}
+		\label{fig-7.2.3}	
+	\end{figure}
+	
+	\item What is the sampling frequency of the input signal?
+	
+	\solution The sampling frequency of the input signal is \SI{44100}{\hertz} = \SI{44.1}{\kilo\hertz}
+	
+	\item What is the type, order and cutoff frequency of the above Butterworth filter?
+	
+	\solution 
+	
+	Type: low-pass
+	
+	Order: 4
+	
+	Cutoff frequency: \SI{4000}{\hertz} = \SI{4}{\kilo\hertz}
+	
+	\item Modify the code with different input parameters to get the best possible output.
+	
+	\solution
+	
+	Order: 10
+	
+	Cutoff frequency: \SI{3000}{\hertz} = \SI{3}{\kilo\hertz}
 	
 	\end{enumerate}
 \end{document}

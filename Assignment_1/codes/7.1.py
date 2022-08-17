@@ -9,6 +9,7 @@ input_signal, fs = sf.read('Sound_Noise.wav')
 
 # Sampling frequency of input signal
 sampl_freq = fs
+print(sampl_freq)
 
 # Order of the filter
 order = 4   
