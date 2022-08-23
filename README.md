@@ -8,6 +8,10 @@ Roll number: AI21BTECH11004
 Instructor: Dr. G. V. V. Sharma (https://github.com/gadepall)
 
 ## List of assignments
-- Assignment 1 
+- Sound Assignment
   - 1 August 2022
   - [Digital Signal Processing](https://github.com/gadepall/EE3900-2022/blob/main/filter/main.pdf)
+
+- Assignment 1
+  - 23 August 2022
+  - [Problem 3.1.e](https://research.iaun.ac.ir/pd/naghsh/pdfs/UploadFile_2230.pdf)
