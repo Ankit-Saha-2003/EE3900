@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{polynom}
 \usepackage{siunitx}
+\usepackage{verbatim}
 
 \newcommand{\solution}{\noindent \textbf{Solution: }}
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
@@ -473,10 +474,20 @@
 		H(z) = -4 + 2z^{-1} + 5 - \frac{5}{2}z^{-1} + \frac{5}{4}z^{-2}\\ - \frac{5}{8}z^{-3}  + \frac{5}{16}z^{-4} - \frac{5}{32}z^{-5} + \cdots
 	\end{multline}
 	
+	\begin{multline}
+		H(z) = 1  - \frac{1}{2}z^{-1} + \frac{5}{4}z^{-2}\\ - \frac{5}{8}z^{-3}  + \frac{5}{16}z^{-4} - \frac{5}{32}z^{-5} + \cdots
+	\end{multline}
+	
+	But
+	\begin{align}
+		H(z) = \sum_{n=-\infty}^\infty h(n) z^{-n}
+	\end{align}
+	
 	Therefore, by comparing coefficients
 	\begin{align}
 		h(n) = 
 		\begin{cases}
+			0 & n < 0 \\
 			1 & n = 0 \\
 			-\dfrac12 & n = 1 \\
 			\dfrac{5}{4} & n = 2 \\
@@ -485,6 +496,24 @@
 		\end{cases}
 	\end{align}
 	
+	We have obtained that
+	\begin{align}
+		H(z) &= 1 - \frac12 z^{-1} + 5\sum_{n=2}^\infty \brak{-\frac{z^{-1}}{2}}^n \\
+		&= 1 - \frac12 z^{-1} + \sum_{n=2}^\infty 5\brak{-\frac{1}{2}}^n z^{-n}
+	\end{align}
+	
+	By comparing coefficients,
+	\begin{align}
+		h(n) = 
+		\begin{cases}
+			0 & n < 0 \\
+			1 & n = 0 \\
+			-\dfrac{1}{2} & n = 1 \\
+			5\brak{-\dfrac{1}{2}}^n & n \ge 2
+		\end{cases}
+ 	\end{align}
+
+	\begin{comment}	
 	Alternatively, on applying the inverse $Z$-transform on both sides of the equation
 	\begin{align}
 		H(z) &\ztrans h(n) \\
@@ -514,6 +543,7 @@
 		\caption{Plot of $h(n)$}
 		\label{fig-5.1}	
 	\end{figure} 
+	\end{comment}
 	
 	\item \label{prob:impulse_resp}
 	Find an expression for $h(n)$ using $H(z)$, given that 
