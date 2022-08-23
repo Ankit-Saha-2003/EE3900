@@ -14,4 +14,4 @@ Instructor: Dr. G. V. V. Sharma (https://github.com/gadepall)
 
 - Assignment 1
   - 23 August 2022
-  - [Problem 3.1.e](https://research.iaun.ac.ir/pd/naghsh/pdfs/UploadFile_2230.pdf)
+  - [Problem 3.1.e](https://research.iaun.ac.ir/pd/naghsh/pdfs/UploadFile_2230.pdf#page=150)
