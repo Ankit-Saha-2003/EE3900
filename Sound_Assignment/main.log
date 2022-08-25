@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.6.29)  18 AUG 2022 11:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.6.29)  25 AUG 2022 23:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1098,32 +1098,88 @@ Package pdftex.def Info: ./figs/6.5.png  used on input line 1010.
 LaTeX Warning: Command \j invalid in math mode on input line 1040.
 
 [11 <./figs/6.5.png>]
-<./figs/7.2.1.png, id=416, 462.528pt x 346.896pt>
+Underfull \hbox (badness 6220) in paragraph at lines 1103--1104
+[]\OT1/txr/m/n/12 The above code out-puts the val-ues of
+ []
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+
+LaTeX Warning: Command \j invalid in math mode on input line 1111.
+
+<./figs/7.2.1.png, id=417, 462.528pt x 346.896pt>
 File: ./figs/7.2.1.png Graphic file (type png)
 <use ./figs/7.2.1.png>
-Package pdftex.def Info: ./figs/7.2.1.png  used on input line 1083.
+Package pdftex.def Info: ./figs/7.2.1.png  used on input line 1115.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-<./figs/7.2.2.png, id=417, 462.528pt x 346.896pt>
+<./figs/7.2.2.png, id=418, 462.528pt x 346.896pt>
 File: ./figs/7.2.2.png Graphic file (type png)
 <use ./figs/7.2.2.png>
-Package pdftex.def Info: ./figs/7.2.2.png  used on input line 1090.
+Package pdftex.def Info: ./figs/7.2.2.png  used on input line 1122.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
 
+LaTeX Warning: Command \j invalid in math mode on input line 1123.
 
-LaTeX Warning: Command \j invalid in math mode on input line 1091.
-
-<./figs/7.2.3.png, id=418, 462.528pt x 346.896pt>
+<./figs/7.2.3.png, id=419, 462.528pt x 346.896pt>
 File: ./figs/7.2.3.png Graphic file (type png)
 <use ./figs/7.2.3.png>
-Package pdftex.def Info: ./figs/7.2.3.png  used on input line 1097.
+Package pdftex.def Info: ./figs/7.2.3.png  used on input line 1129.
 (pdftex.def)             Requested size: 252.0pt x 189.00427pt.
-[12 <./figs/7.2.1.png> <./figs/7.2.2.png> <./figs/7.2.3.png>] (./main.aux)
+
+LaTeX Warning: Text page 12 contains only floats.
+
+[12 <./figs/7.2.1.png> <./figs/7.2.2.png> <./figs/7.2.3.png>] [13
+
+] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: EDE0BD39395C52B880A8A7EB6EB76C7D;824.
  ) 
 Here is how much of TeX's memory you used:
- 16592 strings out of 480806
- 277538 string characters out of 5905151
+ 16600 strings out of 480806
+ 277633 string characters out of 5905151
  636848 words of memory out of 6000000
  33412 multiletter control sequences out of 15000+600000
  484743 words of font info for 197 fonts, out of 8000000 for 9000
@@ -1140,10 +1196,10 @@ are/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/share/texlive
 /fonts/type1/public/txfonts/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (12 pages, 368571 bytes).
+Output written on main.pdf (13 pages, 377065 bytes).
 PDF statistics:
- 542 PDF objects out of 1000 (max. 8388607)
- 481 compressed objects within 5 object streams
- 295 named destinations out of 1000 (max. 500000)
+ 556 PDF objects out of 1000 (max. 8388607)
+ 494 compressed objects within 5 object streams
+ 303 named destinations out of 1000 (max. 500000)
  132 words of extra memory for PDF output out of 10000 (max. 10000000)
 

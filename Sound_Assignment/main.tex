@@ -1034,7 +1034,7 @@ IFFT.
 	\solution On taking the $Z$-transform on both sides of the difference equation
 	\begin{align}
 		\sum _{m=0}^{M}a\brak{m} z^{-m} Y(z) &= \sum _{k=0}^{N}b\brak{k} z^{-k} X(z) \\
-		\implies H(z) = \frac{Y(z)}{X(z)} &= \frac{\sum _{k=0}^{N}b\brak{k} z^{-k}}{\sum _{m=0}^{M}a\brak{m} z^{-m	}}
+		\implies H(z) = \frac{Y(z)}{X(z)} &= \frac{\sum _{k=0}^{N}b\brak{k} z^{-k}}{\sum _{m=0}^{M}a\brak{m} z^{-m}}
 	\end{align}
 	
 	For obtaining the discrete Fourier transform, put $z = \j \frac{2\pi i}{I}$ where $I$ is the length of the input signal and $i = 0, 1, \ldots, I-1$
@@ -1068,6 +1068,28 @@ IFFT.
 		\vec{x} = \myvec{x(n) \\ x(n-1) \\ x(n-2) \\ x(n-3) \\ x(n-4)}
 	\end{align}
 	
+	We have
+	\begin{equation}
+		H(z) = \frac{Y(z)}{X(z)} = \frac{\sum _{k=0}^{N}b\brak{k} z^{-k}}{\sum _{m=0}^{M}a\brak{m} z^{-m}}
+	\end{equation}
+	
+	By using partial fraction decomposition, we can write this as
+	\begin{equation}
+		H(z) = \sum_i \frac{r(i)}{1-p(i)z^{-1}} + \sum_j k(j)z^{-j}
+	\end{equation}
+	
+	On taking the inverse $Z$-transform on both sides by using \eqref{eq:anun}
+	\begin{align}
+		H(z) &\ztrans h(n) \\
+		\frac{1}{1-p(i)z^{-1}} &\ztrans \brak{p(i)}^nu(n) \\
+		z^{-j} &\ztrans \delta(n-j) 
+	\end{align}
+	
+	Thus
+	\begin{align}
+		h(n) = \sum_i r(i)\brak{p(i)}^nu(n) + \sum_j k(j)\delta(n-j)
+	\end{align}
+	
 	Download the following Python code
 	\begin{lstlisting}
 		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Assignment_1/codes/7.2.py
@@ -1077,6 +1099,16 @@ IFFT.
 	\begin{lstlisting}
 		python 7.2.py
 	\end{lstlisting}
+	
+	The above code outputs the values of $r(i), p(i), k(i)$
+	\begin{multline}
+		h(n) = 
+		 (0.24 - 0.71\j)(0.56 + 0.14\j)^n u(n) \\
+		+ (0.24 + 0.71\j)(0.56 - 0.14\j)^n u(n) \\
+		+ (-0.25 + 0.12\j)(0.70 + 0.41\j)^n u(n) \\
+		+ (-0.25 - 0.12\j)(0.70 - 0.41\j)^n u(n) \\
+		+ 0.016\delta(n)
+	\end{multline}
 	
 	\begin{figure}[!ht]
 		\centering

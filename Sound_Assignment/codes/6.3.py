@@ -17,6 +17,12 @@ def x(n):
     else:
         return 6 - n
 
+def y(n):
+    if n < 0:
+        return 0
+    else:
+        return x(n) + x(n-2) - 0.5 * y(n-1)
+
 def delta(n):
     if n == 0:
         return 1
@@ -46,12 +52,15 @@ def IDFT(n, inp):
         nsum += inp(k) * np.exp(2j * np.pi * k * n / N)
     return nsum / N
 
+vec_y = scipy.vectorize(y)
 
 nvalues = np.linspace(0, N-1, N)
-plt.stem(nvalues, np.real(IDFT(nvalues, Y)))
+plt.stem(nvalues, vec_y(nvalues), markerfmt='bo', label='$y(n)$')
+plt.stem(nvalues, np.real(IDFT(nvalues, Y)), linefmt='r--', markerfmt='ro', label='$y_D(n)$')
 plt.title('Filter Output using DFT')
 plt.ylabel('$y(n)$')
 plt.xlabel('$n$')
+plt.legend()
 plt.grid()
 plt.savefig('../figs/6.3.png')
 plt.show()

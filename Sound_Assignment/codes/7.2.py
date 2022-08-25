@@ -67,3 +67,7 @@ plt.ylabel('$h(n)$')
 plt.grid()
 plt.savefig('../figs/7.2.3.png')
 plt.show()
+
+# Theoretical h(n)
+r, p, k = signal.residuez(b, a)
+print(r, '\n', p, '\n', k)
