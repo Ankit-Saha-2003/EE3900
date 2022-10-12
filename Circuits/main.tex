@@ -123,7 +123,7 @@
 	\end{align}
 	\end{enumerate}
 	
-	 \section{Laplace Transform}
+	\section{Laplace Transform}
 	\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
 	\item In the circuit, the switch S is connected to position P for a long time so that the charge on the capacitor becomes $q_1$ \SI{}{\micro\coulomb}. Then S is switched to position Q.  After a long time, the charge on the capacitor is $q_2$ \SI{}{\micro\coulomb}
 	
@@ -211,11 +211,11 @@
 		\centering
 		\begin{circuitikz} \draw
 			(0,3) to[battery1, l_=$V_1(s)$] (0,0) node[label={below:0}]{} 
-				-- (8,0) node[label={below:0}]{}
-			(8,3) node[label={above:$V_2$}]{} to[battery1, l=$V_2(s)$] (8,0)
-			(4,3) node[label={above:$V_c(s)$}] {} to[generic, l=$R_2$] (8,3)
-			(4,3) to[generic, l_=$R_1$] (0,3) node[label={above:$V_1$}]{}
-			(4,0) node[ground]{} to[generic, l=$\frac{1}{sC_0}$] (4,3)
+				-- (6,0) node[label={below:0}]{}
+			(6,3) node[label={above:$V_2$}]{} to[battery1, l_=$V_2(s)$] (6,0)
+			(3,3) node[label={above:$V_c(s)$}] {} to[generic, l=$R_2$] (6,3)
+			(3,3) to[generic, l_=$R_1$] (0,3) node[label={above:$V_1$}]{}
+			(3,0) node[ground]{} to[generic, l=$\frac{1}{sC_0}$] (3,3)
 			;
 		\end{circuitikz}
 	\end{figure}
@@ -225,7 +225,7 @@
 		u(t) \system{L} V_1(s) \\
 		2u(t) \system{L} V_2(s)
 	\end{align}
-	Find the voltage across the capacitor $V_{C_0}(s)$
+	Find the voltage across the capacitor $V_c(s)$
 	
 	\solution 
 	\begin{align}
@@ -241,13 +241,149 @@
 		&\qquad = \frac{\frac{1}{R_1C_0} + \frac{2}{R_2C_0}}{s\brak{s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}}} 
 	\end{align}
 	
-	\item Find v_c(t)
+	\item Find $v_c(t)$. Plot using Python.
 
-	\solution 
+	\solution On performing partial fraction decomposition
 	\begin{align} 
-		V_c(s) &=  \frac{\frac{1}{R_1C_0} + \frac{2}{R_2C_0}}{\frac{1}{R_1C_0} + \frac{1}{R_2C_0}} \brak{\frac{1}{s} - \frac{1}{s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}}} 
+		V_c(s) &=  \frac{\frac{1}{R_1C_0} + \frac{2}{R_2C_0}}{\frac{1}{R_1C_0} + \frac{1}{R_2C_0}} \brak{\frac{1}{s} - \frac{1}{s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}}}, \Re(s) > 0
 	\end{align}
 	
+	On taking the inverse Laplace transform, we get
+	\begin{align}
+	v_c(t) &= \frac{2R_1 + R_2}{R_1 + R_2} \brak{u(t) - e^{-\brak{\frac{1}{R_1} + \frac{1}{R_2}} \frac{t}{C_0}} u(t)} \\
+	&= \frac{2R_1 + R_2}{R_1 + R_2} \brak{1 - e^{-\brak{\frac{1}{R_1} + \frac{1}{R_2}} \frac{t}{C_0}} }u(t)
+	\end{align}
 	
+	Substitute the values $R_1 = \SI{1}{\ohm}, R_2 = \SI{2}{\ohm}, C_0 = \SI{1}{\micro\farad}$
+	\begin{align}
+		v_c(t) = \SI[parse-numbers=false]{\frac{4}{3} \brak{1 - e^{-\frac{3}{2} \times 10^6 t}} u(t)}{\volt}
+	\end{align}
+	
+	\item Verify your result using ngspice
+	
+	\end{enumerate}
+	
+	
+	\section{Initial Conditions}
+	\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+	\item Find $q_2$ in Fig. \ref{fig:ckt}
+	
+	\solution After a long time, when steady state is achieved, a capacitor behaves like an open circuit, i.e., current passing through it is zero
+	
+	\begin{figure}[!ht]
+		\centering
+		\begin{circuitikz} \draw
+			(0,3) -- (0,0) node[label={below:0}]{} 
+				-- (8,0) node[label={below:0}]{}
+			(8,3) node[label={above:2}]{} to[battery1, l=2<\volt>] (8,0)
+			(4,3) node[label={above:$V$}] {} to[R=$2\,\Omega$] (8,3)
+			(4,3) to[R, l_=$1\,\Omega$] (0,3) node[label={above:0}]{}
+			(4,0) node[ground]{}
+			;
+		\end{circuitikz}
+	\end{figure}
+	
+	By Kirchoff's junction law, we get
+	\begin{align}
+		\frac{V - 0}{1} &+ \frac{V-2}{2} = 0 \\
+		\implies V &= \SI[parse-numbers=false]{\frac{2}{3}}{\volt} \\
+		\implies q_2 &= CV = \SI[parse-numbers=false]{\frac{2}{3}}{\micro\coulomb}
+	\end{align}
+	
+	\item Draw the equivalent $s$-domain resistive circuit when S is switched to position Q.  Use variables $R_1, R_2, C_0$ for the passive elements.
+Use latex-tikz
+
+	\solution
+	\begin{figure}[!ht]
+		\centering
+		\begin{circuitikz} \draw
+			(0,3) -- (0,0) node[label={below:0}]{} 
+				-- (6,0) node[label={below:0}]{}
+			(6,3) node[label={above:$V_2$}]{} to[battery1, l_=$V_2(s)$] (6,0)
+			(3,3) node[label={above:$V_c(s)$}] {} to[generic, l=$R_2$] (6,3)
+			(3,3) to[generic, l_=$R_1$] (0,3) node[label={above:0}]{}
+			(3,1) to[battery1, l=$\frac{4}{3s}$] (3,0) node[ground]{}
+			(3,1) to[generic, l=$\frac{1}{sC_0}$] (3,3)
+			;
+		\end{circuitikz}
+		\caption{Circuit diagram in $s$-domain}
+		\label{prob:init}
+	\end{figure}
+	
+	The battery $\frac{4}{3s}$ corresponds to the intial potential difference of $\SI[parse-numbers=false]{\frac43}{\volt}$ across the capacitor just before switching it to Q
+	
+	\item Find $V_c(s)$
+	
+	\solution 
+	By Kirchoff's junction law, we get
+	\begin{align}
+		&\frac{V_c - 0}{R_1} + 	\frac{V_c - V_2}{R_2} + \frac{V_c - \frac{4}{3s}}{\frac{1}{sC_0}} = 0 \\
+		\implies &V_c \brak{\frac{1}{R_1} + \frac{1}{R_2} + sC_0} =  \frac{V_2}{R_2} + \frac{4}{3}C_0 \\
+		\implies &V_c(s) = \frac{\frac{2}{sR_2} + \frac{4}{3}C_0}{\frac{1}{R_1} + \frac{1}{R_2} + sC_0} \\
+		&\qquad = \frac{\frac{2}{R_2C_0} + \frac43 s}{s\brak{s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}}} 
+	\end{align}
+	
+	\item Find $v_c(t)$. Plot using Python
+	
+	\solution On performing partial fraction decomposition
+	\begin{multline}
+    V_{c}(s) = \frac{4}{3}\brak{\frac{1}{s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}}} \\
+    + \frac{\frac{2}{R_2C_0}}{\frac{1}{R_1C_0} +\frac{1}{R_2C_0}}\brak{\frac{1}{s} - \frac{1}{s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}}} 
+	\end{multline}
+	for $\Re(s) > 0$
+	
+	On taking the inverse Laplace transform, we get
+	\begin{multline}
+    v_c(t) = \frac{4}{3}e^{-\brak{\frac{1}{R_1} + \frac{1}{R_2}}\frac{t}{C_0}}u(t) \\
+    + \frac{2R_1}{R_1 + R_2} \brak{u(t) - e^{-\brak{\frac{1}{R_1} + \frac{1}{R_2}}\frac{t}{C_0}}u(t) } 
+	\end{multline}
+	
+	Substitute the values $R_1 = \SI{1}{\ohm}, R_2 = \SI{2}{\ohm}, C_0 = \SI{1}{\micro\farad}$
+	\begin{align}
+		v_c(t) &= \frac43 e^{-\frac{3}{2} \times 10^6 t}u(t) + \frac{2}{3}\brak{1 - e^{-\frac{3}{2} \times 10^6 t}}u(t) \\
+		&= \SI[parse-numbers=false]{\frac{2}{3} \brak{1 + e^{-\frac{3}{2} \times 10^6 t}} u(t)}{\volt}
+	\end{align}
+	
+	\item Verify your result using ngspice
+	
+	\item Find $v_c(0^-)$, $v_c(0^+)$ and $v_c(\infty)$
+	
+	\solution At $t = 0^-$, the switch still hasn't been switched to Q and the circuit is in steady state
+	\begin{align}
+		v_c(0^-) = \SI[parse-numbers=false]{\frac43}{\volt}
+	\end{align}
+	
+	For $t \ge 0$, we can use the above formula
+	\begin{align}
+		v_c(0^+) &= \lim_{t\to0^+}v_c(t) = \SI[parse-numbers=false]{\frac43}{\volt} \\
+		v_c(\infty) &= \lim_{t\to\infty}v_c(t) = \SI[parse-numbers=false]{\frac23}{\volt}
+	\end{align}
+	
+	\item Obtain Fig. \ref{prob:init} using the equivalent differential equation
+	
+	\solution Using Kirchoff's junction law
+	\begin{align}
+		\frac{v_c(t) - 0}{R_1} + \frac{v_c(t) - v_2(t)}{R_2} + \frac{\der{q}}{\der{t}} = 0
+	\end{align}
+	where $q(t)$ is the charge on the capacitor
+	
+	On taking the Laplace transform on both sides of this equation
+	\begin{align}
+		\frac{V_c(s) - 0}{R_1} + \frac{V_c(s) - V_2(s)}{R_2} + \brak{sQ(s) - q(0^-)} = 0
+	\end{align}
+	
+	But $q(0^-) = \frac43 C_0$ and 
+	\begin{align}
+		q(t) &= C_0v_c(t) \\
+		\implies Q(s) &= C_0V_c(s)
+	\end{align}
+	
+	Thus
+	\begin{align}
+		&\frac{V_c(s) - 0}{R_1} + \frac{V_c(s) - V_2(s)}{R_2} + \brak{sC_0V_c(s) - \frac43 C_0} = 0 \\
+		\implies &\frac{V_c(s) - 0}{R_1} + 	\frac{V_c(s) - V_2(s)}{R_2} + \frac{V_c(s) - \frac{4}{3s}}{\frac{1}{sC_0}} = 0 
+	\end{align}
+	
+	which is the same equation as the one we obtained from Fig. \ref{prob:init}
 	\end{enumerate}
 	\end{document}
