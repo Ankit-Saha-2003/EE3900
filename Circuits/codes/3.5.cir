@@ -1,0 +1,13 @@
+Problem 3.5
+V2 v2 0 2
+R1 vc 0 1
+R2 vc v2 2
+C0 vc 0 1u ic=1.333333
+.tran 100u 5u uic
+
+.control
+run
+wrdata 3.5.dat V(vc)
+.endc
+
+.end

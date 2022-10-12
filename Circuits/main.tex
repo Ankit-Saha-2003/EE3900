@@ -160,6 +160,7 @@
 			(4,0) node[ground]{}
 			;
 		\end{circuitikz}
+		\caption{Circuit diagram at steady state before flipping the switch}
 	\end{figure}
 	
 	By Kirchoff's junction law, we get
@@ -218,6 +219,8 @@
 			(3,0) node[ground]{} to[generic, l=$\frac{1}{sC_0}$] (3,3)
 			;
 		\end{circuitikz}
+		\caption{Circuit diagram in $s$-domain before flipping the switch}
+		\label{fig:lap}
 	\end{figure}
 		
 	where 
@@ -261,6 +264,52 @@
 	
 	\item Verify your result using ngspice
 	
+	\solution Download the following codes for simulation and plotting Fig. \ref{fig-2} respectively
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Circuit/codes/2.8.cir
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Circuit/codes/2.7.py
+	\end{lstlisting}
+	
+	Run the codes by executing
+	\begin{lstlisting}
+		ngspice 2.8.cir
+		python 2.7.py
+	\end{lstlisting}	
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/2.png}
+		\caption{Plot of $v_c(t)$ before flipping the switch}
+		\label{fig-2}	
+	\end{figure}
+	
+	\item Obtain Fig. \ref{fig:lap} using the equivalent differential equation
+	
+	\solution Using Kirchoff's junction law
+	\begin{align}
+		\frac{v_c(t) - v_1(t)}{R_1} + \frac{v_c(t) - v_2(t)}{R_2} + \frac{\der{q}}{\der{t}} = 0
+	\end{align}
+	where $q(t)$ is the charge on the capacitor
+	
+	On taking the Laplace transform on both sides of this equation
+	\begin{align}
+		\frac{V_c(s) - V_1(s)}{R_1} + \frac{V_c(s) - V_2(s)}{R_2} + \brak{sQ(s) - q(0^-)} = 0
+	\end{align}
+	
+	But $q(0^-) = 0$ and 
+	\begin{align}
+		q(t) &= C_0v_c(t) \\
+		\implies Q(s) &= C_0V_c(s)
+	\end{align}
+	
+	Thus
+	\begin{align}
+		&\frac{V_c(s) - V_1(s)}{R_1} + \frac{V_c(s) - V_2(s)}{R_2} + sC_0V_c(s) = 0 \\
+		\implies &\frac{V_c(s) - V_1(s)}{R_1} + 	\frac{V_c(s) - V_2(s)}{R_2} + \frac{V_c(s) - 0}{\frac{1}{sC_0}} = 0 
+	\end{align}
+	
+	which is the same equation as the one we obtained from Fig. \ref{fig:lap}
+	
 	\end{enumerate}
 	
 	
@@ -281,6 +330,7 @@
 			(4,0) node[ground]{}
 			;
 		\end{circuitikz}
+		\caption{Circuit diagram at steady state after flipping the switch}
 	\end{figure}
 	
 	By Kirchoff's junction law, we get
@@ -306,7 +356,7 @@ Use latex-tikz
 			(3,1) to[generic, l=$\frac{1}{sC_0}$] (3,3)
 			;
 		\end{circuitikz}
-		\caption{Circuit diagram in $s$-domain}
+		\caption{Circuit diagram in $s$-domain after flipping the switch}
 		\label{prob:init}
 	\end{figure}
 	
@@ -345,6 +395,25 @@ Use latex-tikz
 	\end{align}
 	
 	\item Verify your result using ngspice
+	
+	\solution Download the following codes for simulation and plotting Fig. \ref{fig-3} respectively
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Circuit/codes/3.5.cir
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Circuit/codes/3.4.py
+	\end{lstlisting}
+	
+	Run the codes by executing
+	\begin{lstlisting}
+		ngspice 3.5.cir
+		python 3.4.py
+	\end{lstlisting}	
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/3.png}
+		\caption{Plot of $v_c(t)$ after flipping the switch}
+		\label{fig-3}	
+	\end{figure}
 	
 	\item Find $v_c(0^-)$, $v_c(0^+)$ and $v_c(\infty)$
 	
