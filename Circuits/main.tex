@@ -455,4 +455,74 @@ Use latex-tikz
 	
 	which is the same equation as the one we obtained from Fig. \ref{prob:init}
 	\end{enumerate}
+	
+	\section{Bilinear Transform}
+	\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+	\item In Fig. \ref{fig:ckt}, consider the case when $S$ is switched to $Q$ right in the beginning. Formulate the differential equation
+	
+	\solution The differential equation is the same as before 
+	\begin{equation}
+		\frac{v_c(t) - 0}{R_1} + \frac{v_c(t) - v_2(t)}{R_2} + \frac{\der{q}}{\der{t}} = 0
+	\end{equation}
+	
+	but with a different initial condition
+	\begin{equation}
+		q(0^-) = q(0) = 0
+	\end{equation}
+	
+	\item Find $H(s)$ considering the ouput voltage at the capacitor
+	
+	\solution On taking the Laplace transform on both sides of this equation
+	\begin{align}
+		&\frac{V_c(s)}{R_1} + \frac{V_c(s) - V_2(s)}{R_2} + sQ(s) - 0 = 0 \\
+		\implies &V_c(s) \brak{\frac{1}{R_1} + \frac{1}{R_2}} + sC_0V_c(s) = \frac{V_2(s)}{R_2} \\
+		\implies &\frac{V_c(s)}{V_2(s)} = \frac{\frac{1}{R_2}}{\frac{1}{R_1} + \frac{1}{R_2} + sC_0}
+	\end{align}
+	
+	The transfer function is thus
+	\begin{align}
+		H(s) = \frac{\frac{1}{R_2C_0}}{s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}}
+	\end{align}
+	
+	On substituting the values, we get
+	\begin{equation}
+		H(s) = \frac{5 \times 10^5}{s + 1.5 \times 10^6}
+	\end{equation}
+	
+	\item Plot $H(s)$.  What kind of filter is it?
+	
+	\solution Download the following Python code that plots Fig. \ref{fig-4.3}
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Circuit/codes/4.3.py
+	\end{lstlisting}
+	
+	Run the codes by executing
+	\begin{lstlisting}
+		python 4.3.py
+	\end{lstlisting}	
+	
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/4.3.png}
+		\caption{Plot of $H(s)$}
+		\label{fig-4.3}	
+	\end{figure}
+	
+	Consider the frequency-domain transfer function by putting $s = \j\omega$
+	\begin{align}
+		H(\j\omega) &= \frac{5 \times 10^5}{\j\omega + 1.5 \times 10^6} \\
+		\implies \abs{H(\j\omega)} &= \frac{5 \times 10^5}{\sqrt{\omega^2 + 2.25\times10^{12}}}
+	\end{align}
+	
+	As $\omega$ increases, $\abs{H(\j\omega)}$ decreases
+	
+	In other words, the amplitude of high-frequency signals gets diminished and they get filtered out
+	
+	Therefore, this is a low-pass filter
+	
+	\item Using trapezoidal rule for integration, formulate the difference equation by considering 
+	\begin{align}
+		y(n) = y(t)\vert_{t=n}
+	\end{align}
+	\end{enumerate}
 	\end{document}
