@@ -326,6 +326,22 @@
 		\caption{Comparison of the Fourier series of $x(t)$}
 		\label{fig-comparison}	
 	\end{figure}
-	
+	\end{enumerate}
+
+	\section{Fourier Transform}
+	\begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
+	\item 
+	\begin{align}
+		\delta(t) &= 0 && t \ne 0 \\
+		\int_{-\infty}^{\infty} \delta(t) &= 1
+	\end{align}
+
+	\item Find the Fourier transform of $x(t)$
+
+	\solution 
+	\begin{align}
+		x(t) &= \sum_{k=-\infty}^\infty c_k e^{\j 2\pi kf_0t} \\
+		\mathcal{F}\cbrak{x(t)} &= \sum_{k=-\infty}^\infty c_k \mathcal{F}\cbrak{e^{\j 2\pi kf_0t}}
+	\end{align}
 	\end{enumerate}
 	\end{document}
