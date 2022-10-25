@@ -461,9 +461,10 @@ Use latex-tikz
 	\item In Fig. \ref{fig:ckt}, consider the case when $S$ is switched to $Q$ right in the beginning. Formulate the differential equation
 	
 	\solution The differential equation is the same as before 
-	\begin{equation}
-		\frac{v_c(t) - 0}{R_1} + \frac{v_c(t) - v_2(t)}{R_2} + \frac{\der{q}}{\der{t}} = 0
-	\end{equation}
+	\begin{align}
+		&\frac{v_c(t) - 0}{R_1} + \frac{v_c(t) - v_2(t)}{R_2} + \frac{\der{q}}{\der{t}} = 0 \\
+		\text{i.e., } &\frac{v_c(t)}{R_1} + \frac{v_c(t) - v_2(t)}{R_2} + C_0\frac{\der{v_c}}{\der{t}} = 0
+	\end{align}
 	
 	but with a different initial condition
 	\begin{equation}
@@ -524,5 +525,85 @@ Use latex-tikz
 	\begin{align}
 		y(n) = y(t)\vert_{t=n}
 	\end{align}
+	
+	\solution
+	\begin{align}
+		&\frac{v_c(t)}{R_1} + \frac{v_c(t) - v_2(t)}{R_2} + C_0\frac{\der{v_c}}{\der{t}} = 0 \\
+		\implies &C_0\frac{\der{v_c}}{\der{t}} = \frac{2u(t)-v_c(t)}{R_2} - \frac{v_c(t)}{R_1} \\
+		\implies &\left.v_c(t)\right|_{t=n}^{n+1} = \int_{n}^{n+1} \brak{\frac{2u(t)-v_c(t)}{R_2C_0} - \frac{v_c(t)}{R_1C_0}} \der{t}
+	\end{align}
+	
+	By the trapezoidal rule of integration
+	\begin{align}
+		\int_a^b f(t) \der{t} \approx \frac{b-a}{2} (f(a) + f(b))
+	\end{align}
+	
+	Consider $y(t) = v_c(t)$
+	\begin{multline}
+		y(n+1) - y(n) = \frac{1}{R_2C_0}\brak{u(n)+u(n+1)} \\
+		- \frac12(y(n+1) + y(n))\brak{\frac{1}{R_1C_0} + \frac{1}{R_2C_0}}
+	\end{multline}
+	
+	Thus, the difference equation is
+	\begin{multline}
+		y(n+1) \brak{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}} \\= y(n) \brak{1 - \frac{1}{2R_1C_0} - \frac{1}{2R_2C_0}} \\+ \frac{1}{R_2C_0}\brak{u(n)+u(n+1)}
+	\end{multline}
+	
+	\item Find $H(z)$
+	
+	\solution Let $\z{y(n)} = Y(z)$
+	
+	On taking the $Z$-transform on both sides of the difference equation
+	\begin{multline}
+		zY(z)\brak{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}} \\= Y(z)\brak{1 - \frac{1}{2R_1C_0} - \frac{1}{2R_2C_0}} \\+ \frac{1}{R_2C_0} \brak{\frac{1}{1-z^{-1}} + \frac{z}{1-z^{-1}}}
+	\end{multline}
+	\begin{multline}
+		Y(z)\brak{z + \frac{z}{2R_1C_0} + \frac{z}{2R_2C_0} - 1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}} \\
+		= \frac{1}{R_2C_0} \frac{1+z}{1-z^{-1}}
+	\end{multline}
+	
+	Also
+	\begin{align}
+		v_2(t) &= 2 &&\forall t \ge 0\\
+		\implies x(n) &= 2u(n) \\
+		\implies X(z) &= \frac{2}{1-z^{-1}} &&\abs{z} > 1
+	\end{align}
+	
+	Thus, the transfer function in $z$-domain is
+	\begin{align}
+		H(z) &= \frac{Y(z)}{X(z)} \\
+		&= \frac{\frac{1+z}{2R_2C_0}}{z + \frac{z}{2R_1C_0} + \frac{z}{2R_2C_0} - 1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}} \\
+		&= \frac{\frac{1 + z^{-1}}{2R_2C_0}}{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0} - z^{-1} + \frac{z^{-1}}{2R_1C_0} + \frac{z^{-1}}{2R_2C_0}}
+	\end{align}
+	
+	On substituting the values
+	\begin{align}
+		H(z) &= \frac{2.5\times10^5 (1+z^{-1})}{7.5\times10^5 + 1 + (7.5\times10^5 - 1)z^{-1}}
+	\end{align}
+	
+	with the ROC being
+	\begin{align}
+		\abs{z} &> \max\brak{1, \abs{\frac{7.5\times10^5 - 1}{7.5\times10^5 + 1}}} \\
+		\implies \abs{z} &> 1
+	\end{align}
+	
+	\item How can you obtain $H(z)$ from $H(s)$?
+	
+	\solution The $Z$-transform can be obtained from the Laplace transform by the substitution
+	\begin{align}
+		s &= \frac{2}{T} \frac{1-z^{-1}}{1+z^{-1}}
+	\end{align}
+	where $T$ is the step size of the trapezoidal rule ($1$ in our case)
+	
+	This is known as the bilinear transform
+	
+	Thus
+	\begin{align}
+		H(z) &= \frac{\frac{1}{R_2C_0}}{2\frac{1-z^{-1}}{1+z^{-1}} + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}} \\
+		&= \frac{\frac{1 + z^{-1}}{2R_2C_0}}{1-z^{-1}	 + \brak{\frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}}(1 + z^{-1})} \\
+		&= \frac{\frac{1 + z^{-1}}{2R_2C_0}}{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0} - z^{-1} + \frac{z^{-1}}{2R_1C_0} + \frac{z^{-1}}{2R_2C_0}} \\
+		&= \frac{2.5\times10^5 (1+z^{-1})}{7.5\times10^5 + 1 + (7.5\times10^5 - 1)z^{-1}}
+	\end{align}
+	which is the same as what we obtained earlier
 	\end{enumerate}
 	\end{document}
