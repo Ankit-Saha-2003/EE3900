@@ -3,6 +3,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sp
+import subprocess
+import shlex
 
 def vc(t):
     if t < 0:
@@ -22,4 +24,5 @@ plt.title('Voltage across Capacitor')
 plt.grid()
 plt.legend()
 plt.savefig('../figs/2.png')
-plt.show()
+#plt.show()
+#subprocess.run(shlex.split("termux-open ../figs/4.3.png"))
