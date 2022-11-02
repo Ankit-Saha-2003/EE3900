@@ -20,3 +20,18 @@ Instructor: Dr. G. V. V. Sharma (https://github.com/gadepall)
   - 25 September 2022
   - [Oppenheim Problem 2.3](https://research.iaun.ac.ir/pd/naghsh/pdfs/UploadFile_2230.pdf#page=94)
   
+- Pingala
+  - 28 September 2022
+  - [Pingala Series](https://github.com/gadepall/EE3900-2022/blob/main/pingala/main.pdf)
+  
+- Circuits
+  - 8 October 2022
+  - [Circuits and Transforms](https://github.com/gadepall/EE3900-2022/blob/main/cktsig/main.pdf)
+  
+- Fourier
+  - 12 October 2022
+  - [Fourier Series](https://github.com/gadepall/EE3900-2022/blob/main/charger/main.pdf)
+  
+- Charger Lab
+  - 1 November 2022
+  - Lab report for making a mobile charger
