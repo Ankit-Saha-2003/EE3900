@@ -15,6 +15,7 @@
 \usepackage{siunitx}
 \usepackage{verbatim}
 \usepackage[siunitx]{circuitikz}
+\usepackage{cancel}
 
 \newcommand{\solution}{\noindent \textbf{Solution: }}
 \providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
@@ -617,8 +618,8 @@ Use latex-tikz
 	
 	On taking the inverse $Z$-transform by considering the ROC to be $\abs{z} > 1$, we get
 	\begin{align}
-		y(n) &= \frac{2}{3}u(n) - \frac{2}{3}\frac{1}{7.5\times10^5 + 1}\brak{-\frac{7.5\times10^5 - 1}{7.5\times10^5 + 1}}^nu(n) \\
-		&= \frac{2}{3} \brak{1 - \frac{(1-7.5\times10^5)^n}{(1+7.5\times10^5)^{n+1}}}u(n)
+		y(n) &= \frac{2}{3}u(n) - \frac{2}{3}\brak{-\frac{7.5\times10^5 - 1}{7.5\times10^5 + 1}}^nu(n) \\
+		&= \frac{2}{3} \brak{1 - \brak{\frac{1-7.5\times10^5}{1+7.5\times10^5}}^n}u(n)
 	\end{align}
 	
 	If we are sampling the signal at intervals of $T \ll 10^{-5}$, say $\SI[parse-numbers=false]{10^{-7}}{\second}$, i.e., $n = 10^{-7}, 2\times10^{-7},\ldots$
@@ -668,5 +669,47 @@ Use latex-tikz
 		\caption{Plots of $y(t)$ and $y(n)$}
 		\label{fig-4.7}	
 	\end{figure}
+	
+	\item Find $y(n)$ by solving the difference equation
+	
+	\solution 
+	\begin{multline}
+		y(n+1) \brak{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}} \\= y(n) \brak{1 - \frac{1}{2R_1C_0} - \frac{1}{2R_2C_0}} \\+ \frac{1}{R_2C_0}\brak{u(n)+u(n+1)}
+	\end{multline}	
+	
+	For $n \ge 0$, $u(n) + u(n+1) = 2$
+	\begin{multline}
+		y(n+1) = y(n)\brak{\frac{1 - \frac{1}{2R_1C_0} - \frac{1}{2R_2C_0}}{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}}} \\+ \frac{\frac{2}{R_2C_0}}{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}}
+	\end{multline}
+	
+	Let
+	\begin{align}
+		a &= \frac{1 - \frac{1}{2R_1C_0} - \frac{1}{2R_2C_0}}{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}} = -\frac{7.5\times10^5 -1}{7.5\times10^5 + 1}\\
+		b &= \frac{\frac{2}{R_2C_0}}{1 + \frac{1}{2R_1C_0} + \frac{1}{2R_2C_0}} = \frac{10^6}{7.5\times10^5 + 1}
+	\end{align}
+	
+	Therefore, the difference equation is
+	\begin{align}
+		y(n+1) &= ay(n) + b \\
+		\implies y(n) &= ay(n-1) + b \\
+		&= a(ay(n-2) + b) + b \\
+		&= a^2(ay(n-3) + b) + b(1+a) 
+	\end{align}
+	
+	On repeating this decomposition, we finally get
+	\begin{align}
+		y(n) &= a^ny(0) + b(1+a+\cdots+a^{n-1}) \\
+		&= 0 + b\brak{\frac{1-a^n}{1-a}}	
+	\end{align}
+	\begin{multline}
+		y(n) = \frac{10^6}{\cancel{7.5\times10^5 + 1}} \times \frac{\cancel{7.5\times10^5 + 1}}{2 \times 7.5\times10^5} \\ \times \brak{1 - \brak{-\frac{7.5\times10^5 -1}{7.5\times10^5 + 1}}^n }
+	\end{multline}
+	\begin{align}
+		y(n) &= \frac{10}{15}\brak{1 - \brak{-\frac{7.5\times10^5 -1}{7.5\times10^5 + 1}}^n } && n \ge 0\\
+		\therefore y(n) &= \frac{2}{3} \brak{1 - \brak{\frac{1-7.5\times10^5}{1+7.5\times10^5}}^n } u(n)
+	\end{align}
+	which is the same as what we obtained earlier
+	
+	
 	\end{enumerate}
 	\end{document}
