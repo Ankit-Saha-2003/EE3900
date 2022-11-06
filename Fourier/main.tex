@@ -333,15 +333,77 @@
 	\item 
 	\begin{align}
 		\delta(t) &= 0 && t \ne 0 \\
-		\int_{-\infty}^{\infty} \delta(t) &= 1
+		\int_{-\infty}^{\infty} \delta(t) \der{t} &= 1
+	\end{align}
+	
+	 \item The Fourier Transform of $g(t)$ is
+ 	\begin{align}
+ 		G(f)=\int_{-\infty}^{\infty}g(t)e^{-j2\pi ft}\,\der{t}
+ 	\end{align}
+ 	
+	\item Show that 
+	\begin{align}
+		g(t-t_0)&\system{F}G(f)e^{-j2\pi ft_0}
+	\end{align}
+	\solution 
+	\begin{align}
+		g(t-t_0) \system{F} &\int_{-\infty}^{\infty}g(t-t_0)e^{-j2\pi ft}\,\der{t} \\
+		=& \int_{-\infty}^{\infty}g(u)e^{-j2\pi f(u+t_0)}\,\der{u} \\
+		=& e^{-j2\pi ft_0} \int_{-\infty}^{\infty}g(u)e^{-j2\pi fu}\,\der{u} \\
+		=& G(f)e^{-j2\pi ft_0}
+	\end{align}
+	
+	\item Show that 
+	\begin{align}
+		G(t)&\system{F}g(-f)
+	\end{align}
+	\solution
+	\begin{align}
+		G(t)&\system{F} \int_{-\infty}^{\infty}G(t)e^{-j2\pi ft}\,\der{t} 
+	\end{align}
+	But
+	\begin{align}
+		g(t)&=\int_{-\infty}^{\infty}G(f)e^{\j2\pi ft}\,\der{f} \\
+		&= \int_{-\infty}^{\infty}G(u)e^{\j2\pi ut}\,\der{u} \\
+		\implies g(-f) &= \int_{-\infty}^{\infty}G(u)e^{-\j2\pi uf}\,\der{u} \\
+		&= \mathcal{F}\cbrak{G(t)}
+	\end{align}
+	
+	\item Find the Fourier transform of $\delta(t)$
+	
+	\solution 
+	\begin{align}
+		\delta(t)\system{F} &\int_{-\infty}^{\infty}\delta(t)e^{-j2\pi ft}\,\der{t} \\
+		=& \left. e^{-j2\pi ft} \right|_{t=0} \\
+		=& 1
+	\end{align}
+	
+	\item Find the Fourier transform of $e^{-\j2\pi f_0 t}$
+	
+	\solution 
+	\begin{align}
+		\delta(t) &\system{F} 1 \\
+		\implies \delta(t-f_0) &\system{F} e^{-j2\pi ff_0} \\
+		\implies e^{-j2\pi tf_0} &\system{F} \delta(-f-f_0) \\
+		\therefore e^{-j2\pi tf_0} &\system{F} \delta(f+f_0)
+	\end{align}
+	
+	\item Find the Fourier transform of $\cos\brak{2\pi f_0 t}$
+	
+	\solution 
+	\begin{align}
+		&\cos\brak{2\pi f_0 t} = \frac{e^{\j2\pi f_0 t} + e^{-\j2\pi f_0 t}}{2} \\
+		\implies &\cos\brak{2\pi f_0 t} \system{F} \frac{\delta(f-f_0) + \delta(f+f_0)}{2}
 	\end{align}
 
-	\item Find the Fourier transform of $x(t)$
+	\item Find the Fourier transform of $x(t)$ and plot it. Verify using Python
 
 	\solution 
 	\begin{align}
 		x(t) &= \sum_{k=-\infty}^\infty c_k e^{\j 2\pi kf_0t} \\
-		\mathcal{F}\cbrak{x(t)} &= \sum_{k=-\infty}^\infty c_k \mathcal{F}\cbrak{e^{\j 2\pi kf_0t}}
+		\mathcal{F}\cbrak{x(t)} &= \sum_{k=-\infty}^\infty c_k \mathcal{F}\cbrak{e^{\j 2\pi kf_0t}} \\
+		&= \sum_{k=-\infty}^\infty c_k \delta(f-kf_0) \\
+		&= \frac{2A_0}{\pi} \sum_{k \text{ is even}} \frac{\delta(f-kf_0)}{1-k^2}
 	\end{align}
 	\end{enumerate}
 	\end{document}
