@@ -32,6 +32,8 @@
 \providecommand{\ztrans}{\overset{\mathcal{Z}}{ \rightleftharpoons}}
 \providecommand{\system}[1]{\overset{\mathcal{#1}}{ \longleftrightarrow}}
 \providecommand{\parder}[2]{\frac{\partial}{\partial #2} \brak{#1}}
+\providecommand{\rect}[1]{\mathrm{rect}\ensuremath{\left(#1\right)}}
+\providecommand{\sinc}[1]{\mathrm{sinc}\ensuremath{\left(#1\right)}}
 
 \let\StandardTheFigure\thefigure
 \let\vec\mathbf
@@ -405,5 +407,253 @@
 		&= \sum_{k=-\infty}^\infty c_k \delta(f-kf_0) \\
 		&= \frac{2A_0}{\pi} \sum_{k \text{ is even}} \frac{\delta(f-kf_0)}{1-k^2}
 	\end{align}
+	
+	Download the following Python code that plots Fig. \ref{fig-3.8}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Fourier/codes/3.8.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 3.8.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/3.8.png}
+		\caption{Plot of the Fourier transform of $x(t)$}
+		\label{fig-2.3}	
+	\end{figure}
+	
+	 \item Show that 
+	 \begin{align}
+		 \rect{t} \system{F} \sinc{f}
+ 	\end{align}
+ 	Verify using Python
+ 	
+ 	\solution
+ 	\begin{align}
+ 		\rect{t} = 
+ 		\begin{cases}
+ 			1 & \abs{t} \le \frac{1}{2} \\
+ 			0 & \text{otherwise}
+ 		\end{cases}
+ 	\end{align}
+ 	Its Fourier transform is given by
+ 	\begin{align}
+ 		\rect{t} \system{F} &\int_{-\infty}^{\infty}\rect{t}e^{-j2\pi ft}\,\der{t} \\
+ 		&= \int_{-\frac{1}{2}}^{\frac{1}{2}} e^{-j2 \pi ft} \der{t} \\
+ 		&= \frac{e^{-j \pi f} - e^{j \pi f}  }{-\j2 \pi f} \\
+ 		&= \frac{\sin\pi f}{\pi f} \\
+ 		&= \sinc{f}
+ 	\end{align}
+ 	
+ 	Download the following Python code that plots Fig. \ref{fig-3.9}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Fourier/codes/3.9.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 3.9.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/3.9.png}
+		\caption{Plot of the Fourier transform of $\rect{t}$}
+		\label{fig-3.9}	
+	\end{figure}
+	
+	\item Find the Fourier transform of $\sinc{t}$. Verify using Python
+	
+	\solution 
+	\begin{align}
+		\rect{t} \system{F} &\sinc{f} \\
+		\implies \sinc{t} \system{F} &\rect{-f} \\
+		&= \rect{f}
+	\end{align}
+	
+	Download the following Python code that plots Fig. \ref{fig-3.10}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Fourier/codes/3.10.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 3.10.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/3.10.png}
+		\caption{Plot of the Fourier transform of $\sinc{t}$}
+		\label{fig-3.10}	
+	\end{figure}
+	\end{enumerate}
+	
+	\section{Filter}
+	\begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
+	\item Find $H(f)$ which transforms $x(t)$ to DC \SI{5}{\volt}
+	
+	\solution Since we want a DC output, the filter we need is a low-pass filter that only lets the zero frequency component pass through, i.e., the amplitude of a  frequency components with a frequency higher than the cutoff frequency $f_c$ has to be zero
+	
+	We can use a rectangular filter for this purpose
+	\begin{align}
+		H(f) = k\,\rect{\frac{f}{2f_c}} =
+		\begin{cases}
+			k & \abs{f} \le f_c \\
+			0 & \text{otherwise}
+		\end{cases}
+	\end{align}
+	
+	Now
+	\begin{align}
+		H(0) = \frac{Y(0)}{X(0)}
+	\end{align}
+	where $Y(k)$ and $X(k)$ are the Fourier transforms of the output \SI{5}{\volt} DC and the input signal respectively
+	\begin{align}
+		k &= \frac{5}{\frac{2A_0}{\pi}} = \frac{5\pi}{2A_0} \\
+		\therefore H(f) &= \frac{5\pi}{2A_0}\rect{\frac{f}{2f_c}}
+	\end{align}
+	
+	
+	\item Find $h(t)$
+	
+	\solution 
+	\begin{gather}
+		\sinc{t} \system{F} \rect{f} \\
+		\implies \sinc{2f_ct} \system{F} \frac{1}{2f_c}\rect{\frac{f}{2f_c}} \\
+		\implies \frac{5\pi}{2A_0} 2f_c \sinc{2f_ct} \system{F} \frac{5\pi}{2A_0}\rect{\frac{f}{2f_c}} \\
+		\therefore h(t) = \frac{5\pi f_c}{A_0} \sinc{2f_ct}
+	\end{gather}
+	
+	\item Verify your result using  through convolution
+	
+	\solution Download the following Python code that plots Fig. \ref{fig-4.3}.
+	\begin{lstlisting}
+		wget https://github.com/Ankit-Saha-2003/EE3900/raw/main/Fourier/codes/4.3.py
+	\end{lstlisting}
+	
+	Run the code by executing
+	\begin{lstlisting}
+		python 4.3.py
+	\end{lstlisting}
+
+	\begin{figure}[!ht]
+		\centering
+		\includegraphics[width=\columnwidth]{./figs/4.3.png}
+		\caption{Plot of the convolution of $x(t)$ and $h(t)$}
+		\label{fig-4.3}	
+	\end{figure}
+	\end{enumerate}
+	
+	\section{Filter Design}
+	\begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
+	\item Design a Butterworth filter for $H(f)$
+	
+	\solution The transfer function of a Butterworth filter is given by
+	\begin{align}
+		\abs{H_n(f)} = \frac{1}{\sqrt{1+\brak{\frac{f}{f_c}}^{2n}}}
+	\end{align}
+	where $n$ is the order of the filter and $f_c$ is the cutoff frequency
+	
+	Let the passband and stopband frequency thresholds be $\SI{50}{\hertz}$ and $\SI{100}{\hertz}$ and their corresponding attenuations be $-\SI{1}{\decibel}$ and $-\SI{5}{\decibel}$ respectively
+	\begin{align}
+		A_p &= 10 \log_{10}\abs{H_n(f_p)}^2 \\
+		&= -10\log_{10}\brak{1+\brak{\frac{f_p}{f_c}}^{2n}} \\
+		A_s &= -10\log_{10}\brak{1+\brak{\frac{f_s}{f_c}}^{2n}} \\
+		\implies n &=\frac{\log\brak{\frac{10^{-\frac{A_p}{10}}-1}{ 10^{-\frac{A_s}{10}}-1}}}{2 \log \brak{\frac{f_p}{f_s}}} \approx 1.53
+	\end{align}
+	
+	Hence, we choose a $2^{\mathrm{nd}}$ order Butterworth filter with
+	\begin{align}
+		f_c = \frac{f_p}{\brak{10^{-\frac{A_p}{10}}-1}^{\frac{1}{2n}}} \approx \SI{77.74}{\hertz}
+	\end{align}
+
+	\item Design a Chebyschev filter for $H(f)$	
+	
+	\solution The transfer function of a Chebyshev filter is given by
+	\begin{align}
+		\abs{H_n(f)} =\frac{1}{\sqrt{1+\epsilon^{2}T_{n}^2\brak{\frac{f}{f_c}}}}
+	\end{align}
+	where $\epsilon$ is the ripple factor, $f_c$ is the cutoff frequency and $T_n$ is a Chebyshev polynomial of the $n^{\mathrm{th}}$ order
+	
+	Assuming the same parameters as before along with a ripple of $\SI{0.1}{\decibel}$, we get
+	\begin{align}
+		\epsilon = \sqrt{10^{\frac{\delta}{10}} - 1} \approx 0.15
+	\end{align}
+	
+	Also, assume that $f_c = f_p \implies \frac{f_s}{f_c} > 1$
+	\begin{align}
+		&A_s = -10\log_{10}\brak{1+\epsilon^{2}T_{n}^2\brak{\frac{f_s}{f_c}}} \\
+		\implies &T_{n}\brak{\frac{f_s}{f_c}} = \frac{\sqrt{10^{-\frac{A_s}{10}} - 1}}{\epsilon} \\
+		\implies &\cosh\brak{n\cosh^{-1}\brak{\frac{f_s}{f_c}}} = \frac{\sqrt{10^{-\frac{A_s}{10}} - 1}}{\epsilon} 
+	\end{align}
+	
+	Thus
+	\begin{align}
+		n = \frac{\cosh^{-1}\brak{\frac{\sqrt{10^{-\frac{A_s}{10}} - 1}}{\epsilon} }}{\cosh^{-1}\brak{\frac{f_s}{f_c}}} \approx 2.26
+	\end{align}
+	
+	Hence, we choose a $3^{\mathrm{rd}}$ order Chebyshev filter
+	
+	\item Design a circuit for your Butterworth filter
+	
+	\solution Using the table of normalized Butterworth coefficients, we can see that for a $2^{\mathrm{nd}}$ order Butterworth filter
+	\begin{align}
+		C_1 &= \SI{1.4142}{\farad} \\
+		L_2 &= \SI{1.4142}{\henry}
+	\end{align}
+	
+	On denormalizing these values, we get
+	\begin{align}
+		C_1' &= \frac{C_1}{2\pi f_c} = \SI{2.89}{\milli\farad} \\
+		L_2' &= \frac{L_2}{2\pi f_c} = \SI{2.89}{\milli\henry}
+	\end{align}
+	
+	\begin{figure}[!ht]
+    \centering
+    \begin{circuitikz} 
+        \draw (0,0) to[short, o-o] (4,0);
+        \draw (1,0) to[C, l=\SI{2.89}{\milli\farad}] (1,2);
+        \draw (0,2) to [short, o-] (1,2) 
+        		to [L, l=\SI{2.89}{\milli\henry}] (3.5,2) 
+        		-- (4,2) to[short, -o] (4,2);      
+    \end{circuitikz}
+    \caption{$2^{\mathrm{nd}}$ order Butterworth filter circuit}
+    \label{ckt:butter}
+	\end{figure}
+	
+	\item Design a circuit for your Chebyschev filter
+	
+	\solution Using the table of normalized Chebyshev coefficients, we can see that for a $3^{\mathrm{rd}}$ order Chebyshev filter
+	\begin{align}
+		C_1 &= \SI{1.4328}{\farad} \\
+		L_2 &= \SI{1.5937}{\henry} \\
+		C_3 &= \SI{1.4328}{\farad}
+	\end{align}
+	
+	On denormalizing these values, we get
+	\begin{align}
+		C_1' &= \frac{C_1}{2\pi f_c} = \SI{4.56}{\milli\farad} \\
+		L_2' &= \frac{L_2}{2\pi f_c} = \SI{5.07}{\milli\henry} \\
+		C_3' &= \frac{C_3}{2\pi f_c} = \SI{4.56}{\milli\farad}
+	\end{align}
+	
+	\begin{figure}[!ht]
+    \centering
+    \begin{circuitikz} 
+        \draw (0,0) to[short, o-o] (5,0);
+        \draw (0,2) to [short, o-] (1,2) 
+        		to [L, l=\SI{5.07}{\milli\henry}] (3.5,2) 
+        		-- (5,2) to[short, -o] (5,2);
+        \draw (1,0) to[C, l=\SI{4.56}{\milli\farad}] (1,2);
+        \draw (3.5,0) to[C, l=\SI{4.56}{\milli\farad}] (3.5,2);
+    \end{circuitikz}
+    \caption{$3^{\mathrm{rd}}$ order Chebyshev filter circuit}
+    \label{ckt:cheby}
+	\end{figure}
+	
 	\end{enumerate}
 	\end{document}
